@@ -36,33 +36,31 @@ const Hero = () => {
         setHerodeHeroUrl(url);
       })
       .catch((error) => {
-        console.error("Error al obtener la URL de grupo.png:", error);
+        console.error("Error al obtener la URL de herodehero.png:", error);
       });
   }, []);
 
   return (
-    <div className="hero px-4 md:px-8 lg:px-16">
+    <div className="hero px-[3.125rem] sm:px-[1.5625rem] md:px-[3.125rem] lg:px-[3.125rem]">
       <Navbar />
-      <div className="hero-content flex flex-col lg:flex-row justify-between">
+      <div className="hero-content flex flex-col lg:flex-row justify-between relative">
+        {/* Lado Izquierdo */}
         <div className="left-h flex-1">
           <div className="hero-banner mt-0.5 bg-customGray rounded-lg w-full max-w-md lg:max-w-3xl text-white relative flex items-center justify-start mx-auto ml-0 pt-2 pb-2">
             <div className="banner-bar absolute top-0 left-0 h-full w-12 bg-orange-500 z-10 rounded-lg slide-right-to-left"></div>
-            <span className="ml-4 z-20 text-base lg:text-lg">All Shapes Fit Here</span>
+            <span className="ml-4 z-20 text-lg md:text-xl lg:text-2xl">All Shapes Fit Here</span>
           </div>
-
-          <div className="hero-text flex flex-col gap-6 md:gap-4 lg:gap-6 uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white overflow-hidden">
-            <div>
-              <span className="stroke-text mr-2">All</span>
-              <span className="stroke-text">Shapes</span>
+          <div className="hero-text flex flex-col gap-6 md:gap-4 lg:gap-6 uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white overflow-hidden mx-auto lg:text-left text-center">
+            <div className="flex flex-col lg:items-start items-center">
+              <span className="stroke-text text-4xl sm:text-5xl md:text-6xl lg:text-6xl">All</span>
+              <span className="stroke-text text-4xl sm:text-5xl md:text-6xl lg:text-6xl">Shapes</span>
             </div>
-            <div>Fit Here</div>
-            <div className="extra-text text-sm sm:text-xs font-light normal-case tracking-wide w-4/5 mx-auto ml-0">
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Fit Here</div>
+            <div className="extra-text text-sm sm:text-xs font-light normal-case tracking-wide w-4/5 mx-auto sm:ml-10">
               Transform your life today!
             </div>
           </div>
-
-          {/* Aplicamos la clase personalizada aquí */}
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 mt-6 z-20">
+          <div className="custom-container flex flex-col lg:flex-row gap-4 lg:gap-8 mt-6 z-20 hidden md:flex">
             <div className="flex flex-col items-center lg:items-start">
               <span className="text-white text-2xl lg:text-3xl">+140 Trainers</span>
               <span className="text-gray-500 uppercase text-sm lg:text-base">Entrenadores</span>
@@ -76,21 +74,19 @@ const Hero = () => {
               <span className="text-gray-500 uppercase text-sm lg:text-base">Programas de entrenamiento</span>
             </div>
           </div>
-
-          {/* Agregamos los botones-hero aquí */}
-          <div className="flex gap-4 font-normal">
-            <button className="btn text-white bg-orange-500 w-32">Start Now</button>
-            <button className="btn text-white bg-transparent w-32 border-2 border-orange-500">Learn More</button>
+          <div className="botonesflex flex-row gap-4 font-normal">
+            <button className="btn text-white bg-orange-500 w-full md:w-32">Start Now</button>
+            <button className="btn text-white bg-transparent w-full md:w-32 border-2 border-orange-500">Learn More</button>
           </div>
         </div>
 
         {/* Lado Derecho */}
-        <div className="right-h flex-1 flex flex-col items-center lg:items-end bg-orange-100 p-4 rounded-md">
-          <div className="right-h-content p-4">
-            <button className='btn mb-4'>+ informacion</button>
+        <div className="cuadroNaranja right-h lg:flex flex-1 flex-col items-center lg:items-end bg-transparent p-4 rounded-md">
+          <div className="right-h-content p-4 hidden md:block">
+            <button className='btn mb-4'>+ información</button>
             <div className="heart-rate-container bg-gray-800 p-4 rounded-md">
               <div className="heart-rate flex flex-col gap-4 items-start">
-                <img src={coraUrl} alt="Heart Rate" className="w-6 h-6 filter-cora" /> {/* Ajustar tamaño */}
+                <img src={coraUrl} alt="Heart Rate" className="w-4 h-4 filter-cora" /> {/* Ajustar tamaño */}
                 <div className="text-gray-500">Heart Rate</div>
                 <div className="text-white text-xl">666 BPM</div>
               </div>
@@ -98,10 +94,24 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Imagenes Hero */}
-        <img src={HerodeHeroUrl} className="herodehero" style={{ top: "10rem", right: "8rem", width: "46rem" }} />
-        <img src={fondoHeroUrl} className="fondohero" style={{ top: "10.25rem", right: "20rem" }} />
+        {/* Imágenes Hero */}
+        <div className="capas-imagenes hidden lg:block">
+          <img src={HerodeHeroUrl} className="herodehero absolute top-10 sm:top-1/2 sm:-translate-y-1/2 sm:right-8 sm:z-20" style={{ width: "46rem" }} />
+          <img src={fondoHeroUrl} className="fondohero absolute sm:top-1/2 sm:-translate-y-1/2 sm:right-20 sm:w-[12.5%] lg:w-auto lg:left-[35rem]" />
+        </div>
       </div>
+      
+      {/* Estilos para tabletas */}
+      <style jsx>{`
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .herodehero {
+            opacity: 0.7;
+          }
+          .hero-banner {
+            width: calc(100% - 2rem); /* Ajustar el padding según sea necesario */
+          }
+        }
+      `}</style>
     </div>
   );
 };

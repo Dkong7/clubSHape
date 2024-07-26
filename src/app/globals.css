@@ -135,5 +135,70 @@ body {
   z-index: 20; /* Un valor mayor para que esté por encima de herodehero */
 }
 
+/* Asegúrate de que los contenedores ocupen el espacio correcto */
+.left-h {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  z-index: 5;
+}
 
+.right-h {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Estilos específicos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column; /* Para que left-h esté arriba y right-h abajo */
+  }
+
+  .herodehero, .fondohero {
+    position: relative;
+    width: 100%; /* Ajustar según el diseño deseado */
+    top: auto;
+    right: auto;
+  }
+
+  .hero-banner {
+    /* Asegúrate de que el banner ocupe el ancho completo en dispositivos móviles */
+    width: 100%;
+  }
+}
+
+/* Ajustes adicionales para dispositivos más pequeños */
+@media (max-width: 480px) {
+  .hero-text {
+    font-size: 2xl; /* Ajustar el tamaño del texto para pantallas pequeñas */
+  }
+
+  .btn {
+    width: 100%; /* Botones ocupan el ancho completo en dispositivos móviles */
+  }
+
+  .right-h-content {
+    padding: 2rem; /* Ajustar el padding para pantallas pequeñas */
+  }
+
+  .heart-rate-container img {
+    width: 4rem; /* Ajustar el tamaño de la imagen para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 768px) {
+  .md:hidden {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .md:flex {
+    display: flex;
+  }
+}
 

@@ -1,0 +1,182 @@
+[1mdiff --git a/src/app/components/Hero.tsx b/src/app/components/Hero.tsx[m
+[1mindex df31c7e..2a25f1f 100644[m
+[1m--- a/src/app/components/Hero.tsx[m
+[1m+++ b/src/app/components/Hero.tsx[m
+[36m@@ -36,33 +36,31 @@[m [mconst Hero = () => {[m
+         setHerodeHeroUrl(url);[m
+       })[m
+       .catch((error) => {[m
+[31m-        console.error("Error al obtener la URL de grupo.png:", error);[m
+[32m+[m[32m        console.error("Error al obtener la URL de herodehero.png:", error);[m
+       });[m
+   }, []);[m
+ [m
+   return ([m
+[31m-    <div className="hero px-4 md:px-8 lg:px-16">[m
+[32m+[m[32m    <div className="hero px-[3.125rem] sm:px-[1.5625rem] md:px-[3.125rem] lg:px-[3.125rem]">[m
+       <Navbar />[m
+[31m-      <div className="hero-content flex flex-col lg:flex-row justify-between">[m
+[32m+[m[32m      <div className="hero-content flex flex-col lg:flex-row justify-between relative">[m
+[32m+[m[32m        {/* Lado Izquierdo */}[m
+         <div className="left-h flex-1">[m
+           <div className="hero-banner mt-0.5 bg-customGray rounded-lg w-full max-w-md lg:max-w-3xl text-white relative flex items-center justify-start mx-auto ml-0 pt-2 pb-2">[m
+             <div className="banner-bar absolute top-0 left-0 h-full w-12 bg-orange-500 z-10 rounded-lg slide-right-to-left"></div>[m
+[31m-            <span className="ml-4 z-20 text-base lg:text-lg">All Shapes Fit Here</span>[m
+[32m+[m[32m            <span className="ml-4 z-20 text-lg md:text-xl lg:text-2xl">All Shapes Fit Here</span>[m
+           </div>[m
+[31m-[m
+[31m-          <div className="hero-text flex flex-col gap-6 md:gap-4 lg:gap-6 uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white overflow-hidden">[m
+[31m-            <div>[m
+[31m-              <span className="stroke-text mr-2">All</span>[m
+[31m-              <span className="stroke-text">Shapes</span>[m
+[32m+[m[32m          <div className="hero-text flex flex-col gap-6 md:gap-4 lg:gap-6 uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white overflow-hidden mx-auto lg:text-left text-center">[m
+[32m+[m[32m            <div className="flex flex-col lg:items-start items-center">[m
+[32m+[m[32m              <span className="stroke-text text-4xl sm:text-5xl md:text-6xl lg:text-6xl">All</span>[m
+[32m+[m[32m              <span className="stroke-text text-4xl sm:text-5xl md:text-6xl lg:text-6xl">Shapes</span>[m
+             </div>[m
+[31m-            <div>Fit Here</div>[m
+[31m-            <div className="extra-text text-sm sm:text-xs font-light normal-case tracking-wide w-4/5 mx-auto ml-0">[m
+[32m+[m[32m            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Fit Here</div>[m
+[32m+[m[32m            <div className="extra-text text-sm sm:text-xs font-light normal-case tracking-wide w-4/5 mx-auto sm:ml-10">[m
+               Transform your life today![m
+             </div>[m
+           </div>[m
+[31m-[m
+[31m-          {/* Aplicamos la clase personalizada aquí */}[m
+[31m-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 mt-6 z-20">[m
+[32m+[m[32m          <div className="custom-container flex flex-col lg:flex-row gap-4 lg:gap-8 mt-6 z-20 hidden md:flex">[m
+             <div className="flex flex-col items-center lg:items-start">[m
+               <span className="text-white text-2xl lg:text-3xl">+140 Trainers</span>[m
+               <span className="text-gray-500 uppercase text-sm lg:text-base">Entrenadores</span>[m
+[36m@@ -76,21 +74,19 @@[m [mconst Hero = () => {[m
+               <span className="text-gray-500 uppercase text-sm lg:text-base">Programas de entrenamiento</span>[m
+             </div>[m
+           </div>[m
+[31m-[m
+[31m-          {/* Agregamos los botones-hero aquí */}[m
+[31m-          <div className="flex gap-4 font-normal">[m
+[31m-            <button className="btn text-white bg-orange-500 w-32">Start Now</button>[m
+[31m-            <button className="btn text-white bg-transparent w-32 border-2 border-orange-500">Learn More</button>[m
+[32m+[m[32m          <div className="botonesflex flex-row gap-4 font-normal">[m
+[32m+[m[32m            <button className="btn text-white bg-orange-500 w-full md:w-32">Start Now</button>[m
+[32m+[m[32m            <button className="btn text-white bg-transparent w-full md:w-32 border-2 border-orange-500">Learn More</button>[m
+           </div>[m
+         </div>[m
+ [m
+         {/* Lado Derecho */}[m
+[31m-        <div className="right-h flex-1 flex flex-col items-center lg:items-end bg-orange-100 p-4 rounded-md">[m
+[31m-          <div className="right-h-content p-4">[m
+[31m-            <button className='btn mb-4'>+ informacion</button>[m
+[32m+[m[32m        <div className="cuadroNaranja right-h lg:flex flex-1 flex-col items-center lg:items-end bg-transparent p-4 rounded-md">[m
+[32m+[m[32m          <div className="right-h-content p-4 hidden md:block">[m
+[32m+[m[32m            <button className='btn mb-4'>+ información</button>[m
+             <div className="heart-rate-container bg-gray-800 p-4 rounded-md">[m
+               <div className="heart-rate flex flex-col gap-4 items-start">[m
+[31m-                <img src={coraUrl} alt="Heart Rate" className="w-6 h-6 filter-cora" /> {/* Ajustar tamaño */}[m
+[32m+[m[32m                <img src={coraUrl} alt="Heart Rate" className="w-4 h-4 filter-cora" /> {/* Ajustar tamaño */}[m
+                 <div className="text-gray-500">Heart Rate</div>[m
+                 <div className="text-white text-xl">666 BPM</div>[m
+               </div>[m
+[36m@@ -98,10 +94,24 @@[m [mconst Hero = () => {[m
+           </div>[m
+         </div>[m
+ [m
+[31m-        {/* Imagenes Hero */}[m
+[31m-        <img src={HerodeHeroUrl} className="herodehero" style={{ top: "10rem", right: "8rem", width: "46rem" }} />[m
+[31m-        <img src={fondoHeroUrl} className="fondohero" style={{ top: "10.25rem", right: "20rem" }} />[m
+[32m+[m[32m        {/* Imágenes Hero */}[m
+[32m+[m[32m        <div className="capas-imagenes hidden lg:block">[m
+[32m+[m[32m          <img src={HerodeHeroUrl} className="herodehero absolute top-10 sm:top-1/2 sm:-translate-y-1/2 sm:right-8 sm:z-20" style={{ width: "46rem" }} />[m
+[32m+[m[32m          <img src={fondoHeroUrl} className="fondohero absolute sm:top-1/2 sm:-translate-y-1/2 sm:right-20 sm:w-[12.5%] lg:w-auto lg:left-[35rem]" />[m
+[32m+[m[32m        </div>[m
+       </div>[m
+[32m+[m[41m      [m
+[32m+[m[32m      {/* Estilos para tabletas */}[m
+[32m+[m[32m      <style jsx>{`[m
+[32m+[m[32m        @media (min-width: 768px) and (max-width: 1024px) {[m
+[32m+[m[32m          .herodehero {[m
+[32m+[m[32m            opacity: 0.7;[m
+[32m+[m[32m          }[m
+[32m+[m[32m          .hero-banner {[m
+[32m+[m[32m            width: calc(100% - 2rem); /* Ajustar el padding según sea necesario */[m
+[32m+[m[32m          }[m
+[32m+[m[32m        }[m
+[32m+[m[32m      `}</style>[m
+     </div>[m
+   );[m
+ };[m
+[1mdiff --git a/src/app/globals.css b/src/app/globals.css[m
+[1mindex 87a863f..6acc0af 100644[m
+[1m--- a/src/app/globals.css[m
+[1m+++ b/src/app/globals.css[m
+[36m@@ -135,5 +135,70 @@[m [mbody {[m
+   z-index: 20; /* Un valor mayor para que esté por encima de herodehero */[m
+ }[m
+ [m
+[32m+[m[32m/* Asegúrate de que los contenedores ocupen el espacio correcto */[m
+[32m+[m[32m.left-h {[m
+[32m+[m[32m  position: relative;[m
+[32m+[m[32m  overflow: hidden;[m
+[32m+[m[32m  width: 100%;[m
+[32m+[m[32m  z-index: 5;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.right-h {[m
+[32m+[m[32m  position: relative;[m
+[32m+[m[32m  width: 100%;[m
+[32m+[m[32m  display: flex;[m
+[32m+[m[32m  justify-content: center;[m
+[32m+[m[32m  align-items: center;[m
+[32m+[m[32m  z-index: 10;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Estilos específicos para pantallas pequeñas */[m
+[32m+[m[32m@media (max-width: 768px) {[m
+[32m+[m[32m  .hero-content {[m
+[32m+[m[32m    flex-direction: column; /* Para que left-h esté arriba y right-h abajo */[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  .herodehero, .fondohero {[m
+[32m+[m[32m    position: relative;[m
+[32m+[m[32m    width: 100%; /* Ajustar según el diseño deseado */[m
+[32m+[m[32m    top: auto;[m
+[32m+[m[32m    right: auto;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  .hero-banner {[m
+[32m+[m[32m    /* Asegúrate de que el banner ocupe el ancho completo en dispositivos móviles */[m
+[32m+[m[32m    width: 100%;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+ [m
+[32m+[m[32m/* Ajustes adicionales para dispositivos más pequeños */[m
+[32m+[m[32m@media (max-width: 480px) {[m
+[32m+[m[32m  .hero-text {[m
+[32m+[m[32m    font-size: 2xl; /* Ajustar el tamaño del texto para pantallas pequeñas */[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  .btn {[m
+[32m+[m[32m    width: 100%; /* Botones ocupan el ancho completo en dispositivos móviles */[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  .right-h-content {[m
+[32m+[m[32m    padding: 2rem; /* Ajustar el padding para pantallas pequeñas */[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  .heart-rate-container img {[m
+[32m+[m[32m    width: 4rem; /* Ajustar el tamaño de la imagen para pantallas pequeñas */[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m@media (max-width: 768px) {[m
+[32m+[m[32m  .md:hidden {[m
+[32m+[m[32m    display: block;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m@media (min-width: 769px) {[m
+[32m+[m[32m  .md:flex {[m
+[32m+[m[32m    display: flex;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+ [m
