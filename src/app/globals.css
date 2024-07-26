@@ -6,6 +6,10 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --custom-gray: #333333;
+  --custom-orange: #FFA500;
+  --custom-dark-gray: #1C1C1C;
+  --heart-color: rgb(249, 115, 22); /* Color para el corazón */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +17,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --custom-gray: #222; /* Ajusta para el modo oscuro si es necesario */
   }
 }
 
@@ -30,6 +35,23 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .filter-orange {
+    filter: hue-rotate(50deg) saturate(300%);
+  }
+  .slide-right-to-left {
+    animation: slideRightToLeft 2s linear forwards; /* Animación más rápida y solo una vez */
+  }
+  @keyframes slideRightToLeft {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  .filter-cora {
+    filter: sepia(1) saturate(3) hue-rotate(-30deg) brightness(0.8) contrast(1.2); /* Ajuste fino para el color deseado */
+  }
 }
 
 .stroke-text {
@@ -38,3 +60,80 @@ body {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
 }
+
+.herodehero {
+  position: absolute;
+  width: 46rem; /* 2 veces más grande */
+  z-index: 10; /* Asegúrate de que esté por debajo de fondoheroUrl */
+}
+
+.fondohero {
+  position: absolute;
+  width: 15rem;
+  top: 10.25rem; /* 164px en rem */
+  z-index: 5; /* Asegúrate de que esté por debajo de herodehero */
+}
+
+.left-h {
+  position: relative;
+  overflow: hidden; /* Asegúrate de que el contenido que se mueve no se desborde */
+  width: 100%; /* Asegúrate de que el contenedor tenga el ancho adecuado */
+  z-index: 5; /* Asegúrate de que esté por debajo de right-h */
+}
+
+.right-h {
+  position: relative;
+  width: 100%; /* Asegúrate de que el contenedor tenga el ancho adecuado */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  z-index: 10; /* Asegúrate de que esté por encima de left-h */
+}
+
+
+.hero-banner {
+  position: relative;
+  width: 100%; /* Asegúrate de que el banner ocupe el ancho del contenedor */
+}
+
+.banner-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; /* Ancho ajustado para cubrir el contenedor */
+  background-color: var(--custom-orange); /* Usando la variable de color definida */
+  z-index: 10; /* Asegúrate de que esté por encima del contenido */
+  animation: slideRightToLeft 2s linear forwards; /* Animación rápida y solo una vez */
+}
+
+.right-h {
+  position: relative;
+  width: 100%; /* Asegúrate de que el contenedor tenga el ancho adecuado */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+
+
+.heart-rate-container img {
+  width: 6rem; /* Ajusta el tamaño según sea necesario */
+  height: auto; /* Mantiene la proporción de aspecto */
+  filter: sepia(1) saturate(3) hue-rotate(-30deg) brightness(0.8) contrast(1.2); /* Ajuste del color usando filtros */
+}
+.hidden-figures {
+  opacity: 0; /* Hacer el elemento completamente transparente */
+  visibility: hidden; /* Ocultar el elemento pero conservar su espacio */
+  position: relative; /* Asegurar que el elemento conserve su espacio en el flujo del documento */
+  width: 100%; /* Asegurar que el elemento conserve el ancho necesario */
+}
+
+/* En el archivo global.css o el archivo CSS correspondiente */
+.heart-rate-container {
+  position: relative; /* Asegúrate de que el contenedor esté posicionado */
+  z-index: 20; /* Un valor mayor para que esté por encima de herodehero */
+}
+
+
+

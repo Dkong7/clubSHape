@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        customGray: '#333333',
+        customOrange: '#FFA500',
+        customDarkGray: '#1C1C1C',
+        mutedOrange: '#FFA07A', // Naranja atenuado adicional
+        heartColor: 'rgb(249, 115, 22)', // Color del corazón
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -17,4 +24,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
