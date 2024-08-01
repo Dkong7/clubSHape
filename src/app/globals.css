@@ -8,8 +8,11 @@
   --background-end-rgb: 255, 255, 255;
   --custom-gray: #333333;
   --custom-orange: #FFA500;
+  --custom-light-orange: #FFECB3;
+  --custom-cool-orange: #FFB347;
   --custom-dark-gray: #1C1C1C;
-  --heart-color: rgb(249, 115, 22); /* Color para el corazón */
+  --heart-color: rgb(249, 115, 22);
+  --heart-border-color: #FFA500;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,7 +20,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-    --custom-gray: #222; /* Ajusta para el modo oscuro si es necesario */
+    --custom-gray: #222;
   }
 }
 
@@ -39,7 +42,7 @@ body {
     filter: hue-rotate(50deg) saturate(300%);
   }
   .slide-right-to-left {
-    animation: slideRightToLeft 2s linear forwards; /* Animación más rápida y solo una vez */
+    animation: slideRightToLeft 2s linear forwards;
   }
   @keyframes slideRightToLeft {
     from {
@@ -50,7 +53,42 @@ body {
     }
   }
   .filter-cora {
-    filter: sepia(1) saturate(3) hue-rotate(-30deg) brightness(0.8) contrast(1.2); /* Ajuste fino para el color deseado */
+    filter: sepia(1) saturate(3) hue-rotate(-30deg) brightness(0.8) contrast(1.2);
+  }
+  .border-thick {
+    border-width: 4px;
+    border-color: var(--heart-border-color);
+  }
+  .btn-custom {
+    @apply text-white bg-orange-500 flex items-center justify-center gap-2 rounded-[5px] h-10 px-4;
+  }
+  .toggle-checkbox:checked {
+    @apply right-0;
+    background-color: var(--custom-orange);
+  }
+  .toggle-checkbox {
+    @apply absolute block w-8 h-8 rounded-full border-4 appearance-none cursor-pointer;
+    background-color: var(--custom-cool-orange);
+  }
+  .toggle-label {
+    @apply block overflow-hidden h-10 rounded-full bg-[var(--custom-light-orange)] cursor-pointer relative;
+    padding: 0 2rem;
+  }
+  .toggle-label::before {
+    content: attr(data-language);
+    @apply absolute inset-0 flex items-center justify-center text-gray-700;
+  }
+  .toggle-label::after {
+    content: attr(data-language);
+    @apply absolute inset-0 flex items-center justify-center text-gray-700;
+    opacity: 0;
+  }
+  .toggle-checkbox:checked + .toggle-label::before {
+    opacity: 0;
+  }
+  .toggle-checkbox:checked + .toggle-label::after {
+    opacity: 1;
+    color: var(--custom-dark-gray);
   }
 }
 
@@ -63,79 +101,17 @@ body {
 
 .herodehero {
   position: absolute;
-  width: 46rem; /* 2 veces más grande */
-  z-index: 10; /* Asegúrate de que esté por debajo de fondoheroUrl */
+  width: 46rem;
+  z-index: 10;
 }
 
 .fondohero {
   position: absolute;
   width: 15rem;
-  top: 10.25rem; /* 164px en rem */
-  z-index: 5; /* Asegúrate de que esté por debajo de herodehero */
+  top: 10.25rem;
+  z-index: 5;
 }
 
-.left-h {
-  position: relative;
-  overflow: hidden; /* Asegúrate de que el contenido que se mueve no se desborde */
-  width: 100%; /* Asegúrate de que el contenedor tenga el ancho adecuado */
-  z-index: 5; /* Asegúrate de que esté por debajo de right-h */
-}
-
-.right-h {
-  position: relative;
-  width: 100%; /* Asegúrate de que el contenedor tenga el ancho adecuado */
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  z-index: 10; /* Asegúrate de que esté por encima de left-h */
-}
-
-
-.hero-banner {
-  position: relative;
-  width: 100%; /* Asegúrate de que el banner ocupe el ancho del contenedor */
-}
-
-.banner-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%; /* Ancho ajustado para cubrir el contenedor */
-  background-color: var(--custom-orange); /* Usando la variable de color definida */
-  z-index: 10; /* Asegúrate de que esté por encima del contenido */
-  animation: slideRightToLeft 2s linear forwards; /* Animación rápida y solo una vez */
-}
-
-.right-h {
-  position: relative;
-  width: 100%; /* Asegúrate de que el contenedor tenga el ancho adecuado */
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-}
-
-
-
-.heart-rate-container img {
-  width: 6rem; /* Ajusta el tamaño según sea necesario */
-  height: auto; /* Mantiene la proporción de aspecto */
-  filter: sepia(1) saturate(3) hue-rotate(-30deg) brightness(0.8) contrast(1.2); /* Ajuste del color usando filtros */
-}
-.hidden-figures {
-  opacity: 0; /* Hacer el elemento completamente transparente */
-  visibility: hidden; /* Ocultar el elemento pero conservar su espacio */
-  position: relative; /* Asegurar que el elemento conserve su espacio en el flujo del documento */
-  width: 100%; /* Asegurar que el elemento conserve el ancho necesario */
-}
-
-/* En el archivo global.css o el archivo CSS correspondiente */
-.heart-rate-container {
-  position: relative; /* Asegúrate de que el contenedor esté posicionado */
-  z-index: 20; /* Un valor mayor para que esté por encima de herodehero */
-}
-
-/* Asegúrate de que los contenedores ocupen el espacio correcto */
 .left-h {
   position: relative;
   overflow: hidden;
@@ -152,41 +128,91 @@ body {
   z-index: 10;
 }
 
-/* Estilos específicos para pantallas pequeñas */
+.hero-banner {
+  position: relative;
+  width: 100%;
+}
+
+.banner-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--custom-orange);
+  z-index: 10;
+  animation: slideRightToLeft 2s linear forwards;
+}
+
+.heart-rate-container img {
+  width: 6rem;
+  height: auto;
+  filter: sepia(1) saturate(3) hue-rotate(-30deg) brightness(0.8) contrast(1.2);
+  border-width: 4px;
+  border-color: var(--heart-border-color);
+}
+
+.hidden-figures {
+  opacity: 0;
+  visibility: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.heart-rate-container {
+  position: relative;
+  z-index: 20;
+}
+
+.left-h {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  z-index: 5;
+}
+
+.right-h {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
 @media (max-width: 768px) {
   .hero-content {
-    flex-direction: column; /* Para que left-h esté arriba y right-h abajo */
+    flex-direction: column;
   }
 
-  .herodehero, .fondohero {
+  .herodehero,
+  .fondohero {
     position: relative;
-    width: 100%; /* Ajustar según el diseño deseado */
+    width: 100%;
     top: auto;
     right: auto;
   }
 
   .hero-banner {
-    /* Asegúrate de que el banner ocupe el ancho completo en dispositivos móviles */
     width: 100%;
   }
 }
 
-/* Ajustes adicionales para dispositivos más pequeños */
 @media (max-width: 480px) {
   .hero-text {
-    font-size: 2xl; /* Ajustar el tamaño del texto para pantallas pequeñas */
+    font-size: 2xl;
   }
 
   .btn {
-    width: 100%; /* Botones ocupan el ancho completo en dispositivos móviles */
+    width: 100%;
   }
 
   .right-h-content {
-    padding: 2rem; /* Ajustar el padding para pantallas pequeñas */
+    padding: 2rem;
   }
 
   .heart-rate-container img {
-    width: 4rem; /* Ajustar el tamaño de la imagen para pantallas pequeñas */
+    width: 4rem;
   }
 }
 
@@ -202,3 +228,44 @@ body {
   }
 }
 
+@layer utilities {
+  .p-custom {
+    padding: 0.25rem; /* 4px */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .herodehero {
+    display: block;
+    z-index: -1;
+    top: 11.875rem; /* 190px convertido a rem */
+    width: 100%;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+  .hero-banner {
+    width: calc(100% - 2rem);
+  }
+  .fondohero, .contenedorcorazon {
+    display: none;
+  }
+  .botones {
+    flex-direction: row; /* Mantenemos los botones en fila */
+    justify-content: center; /* Centramos los botones en tabletas */
+    margin-top: 1rem; /* Añadimos un margen superior para separarlos del contenido superior */
+  }
+  .custom-container {
+    flex-direction: row; /* Mantenemos los elementos en fila */
+    justify-content: flex-end; /* Alineamos a la derecha */
+    margin-right: 2rem; /* Ajustamos el margen derecho para moverlo más a la derecha */
+  }
+}
+@media (max-width: 767px) {
+  .herodehero {
+    display: none;
+  }
+}
+.texto-banner-bar-wepa {
+  font-size: 0.9rem !important;
+}

@@ -1,26 +1,25 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Navbar } from "../components/Navbar";
 import { storage } from '../../../firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
 
 const Hero = () => {
-  const [fondoHeroUrl, setFondoHeroUrl] = useState("");
+  const [logoWhiteRef, setlogoWhiteUrl] = useState("");
   const [HerodeHeroUrl, setHerodeHeroUrl] = useState("");
   const [coraUrl, setCoraUrl] = useState("");
 
   useEffect(() => {
-    const fondoHeroRef = ref(storage, 'fondo-hero.png');
+    const logoWhiteRef = ref(storage, 'logo-white_1.svg'); // Cambiado a logo-white.png
     const HerodeHeroRef = ref(storage, 'herodehero.png');
     const coraRef = ref(storage, 'orange-heart-svgrepo-com.svg');
 
-    getDownloadURL(fondoHeroRef)
+    getDownloadURL(logoWhiteRef)
       .then((url) => {
-        setFondoHeroUrl(url);
+        setlogoWhiteUrl(url); // Cambiado para usar la URL de logo-white.png
       })
       .catch((error) => {
-        console.error("Error al obtener la URL de fondo-hero.png:", error);
+        console.error("Error al obtener la URL de logo-white.png:", error);
       });
 
     getDownloadURL(coraRef)
@@ -42,75 +41,74 @@ const Hero = () => {
 
   return (
     <div className="hero px-[3.125rem] sm:px-[1.5625rem] md:px-[3.125rem] lg:px-[3.125rem]">
-      <Navbar />
       <div className="hero-content flex flex-col lg:flex-row justify-between relative">
         {/* Lado Izquierdo */}
         <div className="left-h flex-1">
-          <div className="hero-banner mt-0.5 bg-customGray rounded-lg w-full max-w-md lg:max-w-3xl text-white relative flex items-center justify-start mx-auto ml-0 pt-2 pb-2">
-            <div className="banner-bar absolute top-0 left-0 h-full w-12 bg-orange-500 z-10 rounded-lg slide-right-to-left"></div>
-            <span className="ml-4 z-20 text-lg md:text-xl lg:text-2xl">All Shapes Fit Here</span>
+          <div className="hero-banner mt-0 bg-customGray rounded-lg w-full max-w-md lg:max-w-3xl text-white relative flex items-center justify-start mx-auto ml-0 py-0" style={{ marginBottom: '0' }}>
+            <div className="banner-bar absolute top-0 left-0 h-[1.0625rem] w-[1.0625rem] bg-orange-500 z-10 rounded-lg slide-right-to-left"></div>
+            <span className="texto-banner-bar-wepa ml-4 z-20 text-[0.5rem] md:text-xl lg:text-2xl">Llámanos: 314 666 7777</span>
           </div>
-          <div className="hero-text flex flex-col gap-6 md:gap-4 lg:gap-6 uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white overflow-hidden mx-auto lg:text-left text-center">
+          <div className="hero-text flex flex-col gap-4 uppercase text-[3rem] font-bold text-white overflow-hidden mx-auto lg:text-left text-center mt-4">
             <div className="flex flex-col lg:items-start items-center">
-              <span className="stroke-text text-4xl sm:text-5xl md:text-6xl lg:text-6xl">All</span>
-              <span className="stroke-text text-4xl sm:text-5xl md:text-6xl lg:text-6xl">Shapes</span>
+              <span className="letra-all stroke-text text-[5rem] leading-[4.5rem]">All</span>
+              <span className="letra-shapes stroke-text text-[5rem] leading-[4.5rem]">Shapes</span>
             </div>
-            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Fit Here</div>
-            <div className="extra-text text-sm sm:text-xs font-light normal-case tracking-wide w-4/5 mx-auto sm:ml-10">
+            <div className="fit-here text-[4.6rem] leading-[2.5rem]">Fit Here</div>
+            <div className="extra-text text-sm font-light normal-case tracking-wide w-4/5 mx-auto sm:ml-10">
               Transform your life today!
             </div>
           </div>
-          <div className="custom-container flex flex-col lg:flex-row gap-4 lg:gap-8 mt-6 z-20 hidden md:flex">
+          <div className="custom-container flex flex-row gap-4 lg:gap-8 mt-2 z-20" style={{ height: '4.375rem' }}>
             <div className="flex flex-col items-center lg:items-start">
-              <span className="text-white text-2xl lg:text-3xl">+140 Trainers</span>
-              <span className="text-gray-500 uppercase text-sm lg:text-base">Entrenadores</span>
+              <span className="text-white text-xl lg:text-2xl">+140 </span>
+              <span className="text-gray-500 uppercase text-xs lg:text-sm">Entrenadores</span>
             </div>
             <div className="flex flex-col items-center lg:items-start">
-              <span className="text-white text-2xl lg:text-3xl">+2000 Subscriptions</span>
-              <span className="text-gray-500 uppercase text-sm lg:text-base">Suscripciones</span>
+              <span className="text-white text-xl lg:text-2xl">+2000 </span>
+              <span className="text-gray-500 uppercase text-xs lg:text-sm">Suscripciones</span>
             </div>
             <div className="hidden-figures flex flex-col items-center lg:items-start">
-              <span className="text-white text-2xl lg:text-3xl">+140 Training Programs</span>
-              <span className="text-gray-500 uppercase text-sm lg:text-base">Programas de entrenamiento</span>
+              <span className="text-white text-xl lg:text-2xl">+140 Training Programs</span>
+              <span className="text-gray-500 uppercase text-xs lg:text-sm">Programas de entrenamiento</span>
             </div>
           </div>
-          <div className="botonesflex flex-row gap-4 font-normal">
-            <button className="btn text-white bg-orange-500 w-full md:w-32">Start Now</button>
-            <button className="btn text-white bg-transparent w-full md:w-32 border-2 border-orange-500">Learn More</button>
+
+          <div className="botones flex flex-row gap-4 font-normal mt-[-0.5rem] lg:mt-0 justify-center lg:justify-start">
+            <button className="btn text-white bg-orange-500 w-full md:w-32 rounded-[0.25rem]">Start Now</button>
+            <button className="btn text-white bg-transparent w-full md:w-32 border-2 border-orange-500 rounded-[0.25rem]">Learn More</button>
           </div>
         </div>
 
         {/* Lado Derecho */}
         <div className="cuadroNaranja right-h lg:flex flex-1 flex-col items-center lg:items-end bg-transparent p-4 rounded-md">
-          <div className="right-h-content p-4 hidden md:block">
-            <button className='btn mb-4'>+ información</button>
-            <div className="heart-rate-container bg-gray-800 p-4 rounded-md">
-              <div className="heart-rate flex flex-col gap-4 items-start">
-                <img src={coraUrl} alt="Heart Rate" className="w-4 h-4 filter-cora" /> {/* Ajustar tamaño */}
-                <div className="text-gray-500">Heart Rate</div>
-                <div className="text-white text-xl">666 BPM</div>
+          <div className="right-h-content p-4 hidden md:block new-container" style={{ marginTop: '-0.9375rem' }}>
+            <div className="contenedorcorazon hidden md:block">
+              <button className='btn-infor mb-4'>+ información</button>
+              <div className="heart-rate-container bg-gray-800 p-4 rounded-md mb-[7.1875rem]">
+                <div className="heart-rate flex flex-col gap-4 items-start">
+                  <img
+                    src={coraUrl}
+                    alt="Heart Rate"
+                    className="w-4 h-4 filter-cora border-2 border-white rounded-full"
+                  />
+                  <div className="text-gray-500">Heart Rate</div>
+                  <div className="text-white text-xl">666 BPM</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Imágenes Hero */}
-        <div className="capas-imagenes hidden lg:block">
-          <img src={HerodeHeroUrl} className="herodehero absolute top-10 sm:top-1/2 sm:-translate-y-1/2 sm:right-8 sm:z-20" style={{ width: "46rem" }} />
-          <img src={fondoHeroUrl} className="fondohero absolute sm:top-1/2 sm:-translate-y-1/2 sm:right-20 sm:w-[12.5%] lg:w-auto lg:left-[35rem]" />
+        <div className="capas-imagenes hidden lg:block md:block">
+          <img src={HerodeHeroUrl} className="herodehero absolute top-10 sm:top-[11.875rem] sm:top-[11.875rem] sm:-translate-y-1/2 sm:right-8 sm:z-20" style={{ width: "46rem" }} />
+          <img src={logoWhiteRef} className="fondohero absolute sm:top-1/2 sm:-translate-y-1/2 sm:right-20 sm:w-[12.5%] lg:w-auto lg:left-[24rem] pb-[6.875rem] h-[25rem] hidden md:block" />
         </div>
       </div>
       
-      {/* Estilos para tabletas */}
+      {/* Estilos para tabletas y móviles */}
       <style jsx>{`
-        @media (min-width: 768px) and (max-width: 1024px) {
-          .herodehero {
-            opacity: 0.7;
-          }
-          .hero-banner {
-            width: calc(100% - 2rem); /* Ajustar el padding según sea necesario */
-          }
-        }
+    
       `}</style>
     </div>
   );
