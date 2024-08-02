@@ -14,6 +14,14 @@ const config: Config = {
         customLightOrange: '#FFECB3',
         customCoolOrange: '#FFB347',
         customDarkGray: '#1C1C1C',
+        customPrimary: '#FFA500', // Añadido para unificación con el CSS
+        customPrimaryDark: '#FFB347', // Añadido para unificación con el CSS
+        customFocus: '#FFA500', // Añadido para unificación con el CSS
+        customFocusDark: '#FFB347', // Añadido para unificación con el CSS
+        customBorder: '#333333', // Añadido para unificación con el CSS
+        customBorderDark: '#1C1C1C', // Añadido para unificación con el CSS
+        customPlaceholder: '#CCCCCC', // Añadido para unificación con el CSS
+        customPlaceholderDark: '#666666', // Añadido para unificación con el CSS
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

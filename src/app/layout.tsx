@@ -7,6 +7,8 @@ import  Programs  from "../app/components/Programs";
 import  Reasons  from "../app/components/Reasons";
 import  Planes  from "../app/components/Planes";
 import Testimonials from "./components/Testimonials";
+import Join from "./components/Join";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,13 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <Hero />
-        <Programs/>
-        <Reasons/>
-        <Planes/>
-        <Testimonials/>
+
         {children}
+
+
       </body>
     </html>
   );

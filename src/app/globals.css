@@ -12,7 +12,7 @@
   --custom-cool-orange: #FFB347;
   --custom-dark-gray: #1C1C1C;
   --heart-color: rgb(249, 115, 22);
-  --heart-border-color: #FFA500;
+  --heart-border-color: #3c3934;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +21,10 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
     --custom-gray: #222;
+    --custom-orange: #FFA500;
+    --custom-light-orange: #FFECB3;
+    --custom-cool-orange: #FFB347;
+    --custom-dark-gray: #1C1C1C;
   }
 }
 
@@ -60,7 +64,7 @@ body {
     border-color: var(--heart-border-color);
   }
   .btn-custom {
-    @apply text-white bg-orange-500 flex items-center justify-center gap-2 rounded-[5px] h-10 px-4;
+    @apply text-white  flex items-center justify-center gap-2 rounded-[5px] h-10 px-4;
   }
   .toggle-checkbox:checked {
     @apply right-0;
@@ -164,22 +168,6 @@ body {
   z-index: 20;
 }
 
-.left-h {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  z-index: 5;
-}
-
-.right-h {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column;
@@ -251,21 +239,23 @@ body {
     display: none;
   }
   .botones {
-    flex-direction: row; /* Mantenemos los botones en fila */
-    justify-content: center; /* Centramos los botones en tabletas */
-    margin-top: 1rem; /* Añadimos un margen superior para separarlos del contenido superior */
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
   }
   .custom-container {
-    flex-direction: row; /* Mantenemos los elementos en fila */
-    justify-content: flex-end; /* Alineamos a la derecha */
-    margin-right: 2rem; /* Ajustamos el margen derecho para moverlo más a la derecha */
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 2rem;
   }
 }
+
 @media (max-width: 767px) {
   .herodehero {
     display: none;
   }
 }
+
 .texto-banner-bar-wepa {
   font-size: 0.9rem !important;
 }
