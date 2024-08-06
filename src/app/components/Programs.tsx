@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { storage } from '../../../firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
+import Link from "next/link";
 
 const Programs = () => {
   const [poleIconUrl, setPoleIconUrl] = useState('');
@@ -45,25 +46,33 @@ const Programs = () => {
           <img src={poleIconUrl} alt="Pole Dance" className="max-w-full max-h-24 object-contain" />
           <span className="mt-4 text-lg">Pole Dance</span>
           <span className="text-xs text-yellow-500 mt-2">Descubre la sensualidad y fuerza del pole dance.</span>
-          <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          <Link href="/pole">
+            <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          </Link>
         </div>
         <div className="w-[200px] h-[280px] bg-white bg-opacity-10 border border-white border-opacity-50 rounded-2xl flex flex-col items-center p-4 cursor-pointer transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-orange-100 text-center">
           <img src={pesasIconUrl} alt="Fuerza" className="max-w-full max-h-24 object-contain" />
           <span className="mt-4 text-lg">Fuerza</span>
           <span className="text-xs text-yellow-500 mt-2">Aumenta tu fuerza con entrenamientos especializados.</span>
-          <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          <Link href="/fuerza">
+            <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          </Link>
         </div>
         <div className="w-[200px] h-[280px] bg-white bg-opacity-10 border border-white border-opacity-50 rounded-2xl flex flex-col items-center p-4 cursor-pointer transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-orange-100 text-center">
           <img src={flexIconUrl} alt="Flexibilidad" className="max-w-full max-h-24 object-contain" />
           <span className="mt-4 text-lg">Flexibilidad</span>
           <span className="text-xs text-yellow-500 mt-2">Mejora tu flexibilidad y equilibrio.</span>
-          <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          <Link href="/flex">
+            <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          </Link>
         </div>
         <div className="w-[200px] h-[280px] bg-white bg-opacity-10 border border-white border-opacity-50 rounded-2xl flex flex-col items-center p-4 cursor-pointer transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-orange-100 text-center">
           <img src={meditacionIconUrl} alt="Meditación" className="max-w-full max-h-24 object-contain" />
           <span className="mt-4 text-lg">Meditación</span>
           <span className="text-xs text-yellow-500 mt-2">Encuentra la paz interior a través de la meditación.</span>
-          <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          <Link href="/meditacion">
+            <button className="mt-2 px-2 py-1 bg-orange-500 text-white rounded-sm cursor-pointer transition-colors duration-200 ease-in-out hover:bg-yellow-400 text-sm">Conocer más</button>
+          </Link>
         </div>
       </div>
     </div>

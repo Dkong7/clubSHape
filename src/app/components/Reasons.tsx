@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { storage } from '../../../firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
+import Link from 'next/link';
 
 const Reasons = () => {
   const [images, setImages] = useState({

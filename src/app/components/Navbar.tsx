@@ -65,16 +65,15 @@ export const Navbar = () => {
             </button>
             {isSubmenuOpen && (
               <div className="absolute bg-gray-800 rounded-md shadow-lg py-2 mt-1 z-10">
-                <Link href="/servicios/fuerza" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
-                  Fuerza
+                <Link href="/fuerza" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">                  Fuerza
                 </Link>
-                <Link href="/servicios/flexibilidad" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
+                <Link href="/flex" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
                   Flexibilidad
                 </Link>
-                <Link href="/servicios/pole-dance" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
+                <Link href="/pole" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
                   Pole Dance
                 </Link>
-                <Link href="/servicios/meditacion" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
+                <Link href="/meditacion" className="block px-4 py-2 text-sm text-white hover:bg-gray-700">
                   Meditación
                 </Link>
               </div>
